@@ -1,0 +1,47 @@
+<table border="1"  fixed-header>
+<thead class="table_header">
+    <tr >
+        <th style="width: 3%;">S.No</th>
+
+        <th style="width: 15%;">Name</th>
+        
+        <th>Shift</th>
+                        
+        <th *ngFor="let item of Date " >{{item}}</th>
+        
+    </tr>
+</thead>
+<tbody >
+    <tr   *ngFor="let datas of data[0].employee;let i=index">
+        <td style="padding-left: 0%;">{{i+1}}</td>
+
+        <td style="padding-left: 0%;">
+            {{datas.name}}
+        </td>
+
+        <td  style="padding-left: 0%;">
+          
+            {{ Shift(click(),datas.id) }}
+          
+           
+        </td>
+        
+        <td *ngFor="let item of Date" style="padding-left: 0%;" >
+          <span  *ngFor ="let val of click()">
+            
+            <span *ngIf="item==val" [ngStyle]="item==val  ? find(val,datas.id)==true ? {'color': 'green'} : find(val,datas.id)==false ? {'color': 'red'} : {'color': 'black'} : {'color': 'black'} " 
+            > {{ item==val  ? find(val,datas.id)==true ? "Yes" : find(val,datas.id)==false ? "No" : "AB" : " " }}
+
+              </span>
+             
+            
+          </span >
+
+          <span >  {{ findval(Date,click(),item) ? "AB":" "}}</span>
+          
+        </td>
+        
+    </tr>
+    
+</tbody>
+</table>
